@@ -1,0 +1,55 @@
+<!-- //tạo file json -->
+npm init
+
+
+<!-- //tạo nodemodule -->
+npm install body-parser@1.19.0 dotenv@8.2.0 ejs@3.1.5 express@4.17.1
+
+npm install --save-dev @babel/core@7.12.10 @babel/node@7.12.10 @babel/preset-env@7.12.10 nodemon@2.0.7
+
+.env : cấu hình môi trường port,...
+
+"start": "nodemon --exec babel-node src/server.js"
+
+
+//doc npm sequelize-cli
+<!-- //cai dat sequelize -->
+npm install --save-dev sequelize-cli@6.2.0
+
+npm install --save-dev sequelize@6.6.2
+
+<!-- //tao file .sequelizerc (local) -->
+const path = require('path');
+
+module.exports ={
+    'config' : path.resolve('./','config.json'),
+    'migration-path' : path.resolve('./src', 'migrations'),
+    'models-path' : path.resolve('./src','models'),
+    'seeder-path' :path.resolve('./src','seeder')
+}
+
+
+<!-- cd src -->
+npx sequelize-cli init
+
+<!-- //tao mot model -->
+npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string,email:string
+
+<!-- //cai dat mysql2 -->
+npm install --save mysql2@2.2.5
+
+<!-- //ket noi database // reset database-->
+npx sequelize-cli db:migrate
+
+<!-- //tao 1 demo user -->
+npx sequelize-cli seed:generate --name demo-user
+
+<!-- //them user cho table//chay tat ca seeder de tao-->
+npx sequelize-cli db:seed:all
+
+
+//sequelize connect to DB
+https://sequelize.org/docs/v6/getting-started/
+
+# cai dat bcrypt de chuyen pass thanh chuoi
+npm install --save bcrypt@5.0.1
